@@ -3,11 +3,11 @@ import 'package:cats_app/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const CatBreedsApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CatBreedsApp extends StatelessWidget {
+  const CatBreedsApp({super.key});
 
   @override
   Widget build(BuildContext context) {
