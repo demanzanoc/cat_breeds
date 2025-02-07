@@ -6,7 +6,7 @@ import 'package:cats_app/data/repositories/cat_breeds/cat_breeds_remote_reposito
 import 'package:cats_app/domain/datasources/cat_breeds/cat_breeds_datasource.dart';
 import 'package:cats_app/domain/repositories/cat_breeds/cat_breeds_repository.dart';
 import 'package:cats_app/domain/use_cases/cat_breeds/get_cat_breeds_use_case.dart';
-import 'package:cats_app/presentation/providers/home_screen_provider.dart';
+import 'package:cats_app/presentation/providers/cat_breeds/home_screen_provider.dart';
 
 void setUpCatBreedsDependencies() async {
   // Api Client

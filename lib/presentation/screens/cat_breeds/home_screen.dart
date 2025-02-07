@@ -1,4 +1,4 @@
-import 'package:cats_app/presentation/providers/home_screen_provider.dart';
+import 'package:cats_app/presentation/providers/cat_breeds/home_screen_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

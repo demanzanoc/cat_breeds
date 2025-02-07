@@ -1,6 +1,6 @@
 import 'package:cats_app/presentation/routes/routes.dart';
-import 'package:cats_app/presentation/screens/home_screen.dart';
-import 'package:cats_app/presentation/screens/splash_screen.dart';
+import 'package:cats_app/presentation/screens/cat_breeds/home_screen.dart';
+import 'package:cats_app/presentation/screens/splash/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter appRouter = GoRouter(
