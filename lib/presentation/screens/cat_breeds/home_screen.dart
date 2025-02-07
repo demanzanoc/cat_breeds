@@ -1,4 +1,5 @@
 import 'package:cats_app/presentation/providers/cat_breeds/home_screen_provider.dart';
+import 'package:cats_app/presentation/widgets/cat_breeds/cat_breed_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,8 +20,8 @@ class HomeScreen extends StatelessWidget {
           children: [
             TextField(
               decoration: InputDecoration(
-                labelText: 'Buscar',
-                hintText: 'Ingresa el nombre de la raza',
+                labelText: 'Search',
+                hintText: 'Enter the breed name',
                 border: OutlineInputBorder(),
               ),
               onChanged: (query) {
@@ -37,10 +38,7 @@ class HomeScreen extends StatelessWidget {
                       itemCount: provider.catBreeds.length,
                       itemBuilder: (context, index) {
                         final catBreed = provider.catBreeds[index];
-                        // TODO(demanzanoc): Implement the correct item view
-                        return ListTile(
-                          title: Text(catBreed.name),
-                        );
+                        return CatBreedCard(catBreed: catBreed);
                       },
                     ),
                   );
