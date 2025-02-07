@@ -4,6 +4,7 @@ import 'package:cats_app/presentation/screens/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter appRouter = GoRouter(
+  initialLocation: Routes.splash,
   routes: [
     GoRoute(
       path: Routes.splash,
