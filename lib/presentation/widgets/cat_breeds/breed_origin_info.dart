@@ -1,3 +1,4 @@
+import 'package:cats_app/presentation/utils/text_style_utils.dart';
 import 'package:flutter/material.dart';
 
 class BreedOriginInfo extends StatelessWidget {
@@ -15,14 +16,11 @@ class BreedOriginInfo extends StatelessWidget {
       children: [
         Text(
           'Origin:',
-          style: Theme.of(context)
-              .textTheme
-              .bodyLarge
-              ?.copyWith(fontWeight: FontWeight.bold),
+          style: TextStyleUtils.boldBodyLarge(context),
         ),
         Text(
           origin,
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: TextStyleUtils.bodyLarge(context),
         ),
       ],
     );

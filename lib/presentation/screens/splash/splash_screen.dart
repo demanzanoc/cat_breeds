@@ -1,4 +1,6 @@
+import 'package:cats_app/presentation/constants/assets_constants.dart';
 import 'package:cats_app/presentation/routes/routes.dart';
+import 'package:cats_app/presentation/utils/text_style_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,7 +15,6 @@ class SplashScreen extends StatelessWidget {
 
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    final textStyles = Theme.of(context).textTheme;
 
     return Scaffold(
       body: Center(
@@ -25,10 +26,10 @@ class SplashScreen extends StatelessWidget {
             children: [
               Text(
                 'Catbreeds',
-                style: textStyles.headlineLarge,
+                style: TextStyleUtils.headingLarge(context),
               ),
               Image.asset(
-                'assets/images/cat_splash.png',
+                splashImage,
                 width: screenWidth * 0.5,
                 height: screenHeight * 0.3,
                 fit: BoxFit.contain,
