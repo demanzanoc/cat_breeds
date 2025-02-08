@@ -6,6 +6,7 @@ class DioClient implements HttpClient {
   final _dio = Dio(
     BaseOptions(
       baseUrl: 'https://api.thecatapi.com/v1',
+      // TODO(demanzanoc): Add the API key to a secure place.
       headers: {
         'x-api-key':
             'live_99Qe4Ppj34NdplyLW67xCV7Ds0oSLKGgcWWYnSzMJY9C0QOu0HUR4azYxWkyW2nr',
