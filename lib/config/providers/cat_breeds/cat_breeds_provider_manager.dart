@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../presentation/providers/cat_breeds/home_screen_provider.dart';
 
-class CatBreedsProviderManager {
+abstract class CatBreedsProviderManager {
   static List<ChangeNotifierProvider> buildProviders() {
     return [
       ChangeNotifierProvider<HomeScreenProvider>(
