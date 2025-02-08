@@ -10,7 +10,8 @@ class HomeScreenProvider extends ChangeNotifier {
   final GetCatBreedsUseCase _getCatBreedsUseCase;
 
   final List<CatBreedEntity> _catBreeds = [];
-  List<CatBreedEntity> get catBreeds => _catBreeds;
+  List<CatBreedEntity> _filteredCatBreeds = [];
+  List<CatBreedEntity> get catBreeds => _filteredCatBreeds;
 
   bool _isLoadingCatBreeds = false;
   bool get isLoadingCatBreeds => _isLoadingCatBreeds;
@@ -19,12 +20,25 @@ class HomeScreenProvider extends ChangeNotifier {
     try {
       if (_catBreeds.isEmpty) {
         _isLoadingCatBreeds = true;
-        _catBreeds.addAll(await _getCatBreedsUseCase());
-        _isLoadingCatBreeds = false;
         notifyListeners();
+        _catBreeds.addAll(await _getCatBreedsUseCase());
+        _filteredCatBreeds = _catBreeds;
+        _isLoadingCatBreeds = false;
       }
     } catch (exception) {
       // TODO(demanzanoc): Handle error
     }
+    notifyListeners();
+  }
+
+  void filterCatBreeds(String query) {
+    if (query.isEmpty) {
+      _filteredCatBreeds = _catBreeds;
+    } else {
+      _filteredCatBreeds = _catBreeds.where((catBreed) {
+        return catBreed.name.toLowerCase().contains(query.toLowerCase());
+      }).toList();
+    }
+    notifyListeners();
   }
 }

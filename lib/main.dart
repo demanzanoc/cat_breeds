@@ -3,11 +3,17 @@ import 'package:cats_app/config/providers/provider_manager.dart';
 import 'package:cats_app/config/theme/app_theme.dart';
 import 'package:cats_app/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   setUpDependencies();
-  runApp(const CatBreedsApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((_) {
+    runApp(const CatBreedsApp());
+  });
 }
 
 class CatBreedsApp extends StatelessWidget {

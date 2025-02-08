@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                     border: OutlineInputBorder(),
                   ),
                   onChanged: (query) {
-                    // TODO(demanzanoc): Implement search
+                    provider.filterCatBreeds(query);
                   },
                 ),
                 Expanded(
