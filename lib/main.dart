@@ -8,7 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
-  setUpDependencies();
+  ServiceLocator.setUpDependencies();
   await dotenv.load(fileName: '.env');
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([

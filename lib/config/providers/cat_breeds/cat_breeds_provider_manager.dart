@@ -7,8 +7,9 @@ abstract class CatBreedsProviderManager {
   static List<ChangeNotifierProvider> buildProviders() {
     return [
       ChangeNotifierProvider<HomeScreenProvider>(
-        create: (_) =>
-            HomeScreenProvider(getCatBreedsUseCase: serviceLocator()),
+        create: (_) => HomeScreenProvider(
+          getCatBreedsUseCase: ServiceLocator.serviceLocator(),
+        ),
       ),
     ];
   }

@@ -24,19 +24,21 @@ void main() {
     );
   });
 
-  testWidgets('should render SplashScreen correctly', (tester) async {
-    //Arrange
-    MaterialApp app = MaterialApp.router(
-      routerConfig: goRouter,
-    );
+  group('SplashScreen tests', () {
+    testWidgets('should render SplashScreen correctly', (tester) async {
+      //Arrange
+      MaterialApp app = MaterialApp.router(
+        routerConfig: goRouter,
+      );
 
-    //Act
-    await tester.pumpWidget(app);
+      //Act
+      await tester.pumpWidget(app);
 
-    //Assert
-    expect(find.text('Catbreeds'), findsOneWidget);
-    expect(find.byType(Image), findsOneWidget);
-    await tester.pumpAndSettle(const Duration(seconds: 3));
-    expect(find.text('Home Screen'), findsOneWidget);
+      //Assert
+      expect(find.text('Catbreeds'), findsOneWidget);
+      expect(find.byType(Image), findsOneWidget);
+      await tester.pumpAndSettle(const Duration(seconds: 3));
+      expect(find.text('Home Screen'), findsOneWidget);
+    });
   });
 }

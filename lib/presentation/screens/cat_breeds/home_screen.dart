@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
             return Center(
               child: ErrorView(
                 message: provider.errorMessage,
-                onRetry: () async{
+                onRetry: () async {
                   provider.retryGetCatBreeds();
                 },
               ),
