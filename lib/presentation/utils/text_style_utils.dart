@@ -9,7 +9,7 @@ abstract class TextStyleUtils {
   static TextStyle? bodyLarge(BuildContext context) =>
       Theme.of(context).textTheme.bodyLarge;
 
-  static headingLarge(BuildContext context) =>
+  static headlineLarge(BuildContext context) =>
       Theme.of(context).textTheme.headlineLarge;
 
   static headlineSmall(BuildContext context) =>

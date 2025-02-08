@@ -16,17 +16,20 @@ class HomeScreenProvider extends ChangeNotifier {
   bool _isLoadingCatBreeds = false;
   bool get isLoadingCatBreeds => _isLoadingCatBreeds;
 
+  String _errorMessage = '';
+  String get errorMessage => _errorMessage;
+
   Future<void> getCatBreeds() async {
     try {
       if (_catBreeds.isEmpty) {
         _isLoadingCatBreeds = true;
-        notifyListeners();
         _catBreeds.addAll(await _getCatBreedsUseCase());
         _filteredCatBreeds = _catBreeds;
         _isLoadingCatBreeds = false;
       }
-    } catch (exception) {
-      // TODO(demanzanoc): Handle error
+    } catch (_) {
+      _errorMessage = 'Error getting cat breeds.';
+      _isLoadingCatBreeds = false;
     }
     notifyListeners();
   }
@@ -40,5 +43,11 @@ class HomeScreenProvider extends ChangeNotifier {
       }).toList();
     }
     notifyListeners();
+  }
+
+  void retryGetCatBreeds() {
+    _errorMessage = '';
+    notifyListeners();
+    getCatBreeds();
   }
 }

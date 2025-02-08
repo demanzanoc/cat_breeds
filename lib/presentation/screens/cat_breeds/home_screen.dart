@@ -1,5 +1,6 @@
 import 'package:cats_app/presentation/providers/cat_breeds/home_screen_provider.dart';
 import 'package:cats_app/presentation/widgets/cat_breeds/cat_breed_card.dart';
+import 'package:cats_app/presentation/widgets/common/ui_errors/error_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +18,16 @@ class HomeScreen extends StatelessWidget {
         builder: (context, provider, child) {
           if (provider.isLoadingCatBreeds) {
             return const Center(child: CircularProgressIndicator());
+          }
+          if (provider.errorMessage.isNotEmpty) {
+            return Center(
+              child: ErrorView(
+                message: provider.errorMessage,
+                onRetry: () async{
+                  provider.retryGetCatBreeds();
+                },
+              ),
+            );
           }
           return Padding(
             padding: const EdgeInsets.all(16.0),

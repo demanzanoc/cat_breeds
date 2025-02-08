@@ -26,7 +26,7 @@ class SplashScreen extends StatelessWidget {
             children: [
               Text(
                 'Catbreeds',
-                style: TextStyleUtils.headingLarge(context),
+                style: TextStyleUtils.headlineLarge(context),
               ),
               Image.asset(
                 splashImage,

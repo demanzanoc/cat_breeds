@@ -17,8 +17,8 @@ class CatBreedsRemoteRepository implements CatBreedsRepository {
       return catBreedsModel
           .map((catBreed) => CatBreedsMapper.mapCatApiToEntity(catBreed))
           .toList();
-    } catch (exception) {
-      throw Exception(exception);
+    } catch (_) {
+      throw Exception('Error getting cat breeds.');
     }
   }
 }
