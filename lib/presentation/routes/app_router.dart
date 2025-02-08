@@ -17,7 +17,7 @@ final GoRouter appRouter = GoRouter(
       builder: (context, state) => const HomeScreen(),
     ),
     GoRoute(
-      path: Routes.catBreedDetail,
+      path: Routes.catBreedDetails,
       builder: (context, state) {
         final catBreed = state.extra as CatBreedEntity;
         return CatBreedDetails(catBreed: catBreed);

@@ -1,4 +1,3 @@
-import 'package:cats_app/domain/entities/cat_breeds/cat_breed_entity.dart';
 import 'package:cats_app/presentation/providers/cat_breeds/home_screen_provider.dart';
 import 'package:cats_app/presentation/screens/cat_breeds/home_screen.dart';
 import 'package:cats_app/presentation/widgets/cat_breeds/cat_breed_card.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:provider/provider.dart';
 
+import '../../../mocks/presentation/cat_breed_entity_mock.dart';
 import '../../../mocks/presentation/home_screen_provider_mock.dart';
 
 void main() {
@@ -32,16 +32,6 @@ void main() {
 
   final materialApp = MaterialApp(
     home: HomeScreen(),
-  );
-
-  final catBreedMock = CatBreedEntity(
-    name: 'bambino',
-    origin: 'usa',
-    description: 'cat',
-    lifeSpan: '12',
-    adaptability: 4,
-    intelligence: 5,
-    image: '',
   );
 
   final catBreedsMockedList = [catBreedMock, catBreedMock, catBreedMock];

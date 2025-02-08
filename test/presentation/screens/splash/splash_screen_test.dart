@@ -1,3 +1,4 @@
+import 'package:cats_app/presentation/routes/routes.dart';
 import 'package:cats_app/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -8,14 +9,14 @@ void main() {
 
   setUp(() {
     goRouter = GoRouter(
-      initialLocation: '/',
+      initialLocation: Routes.splash,
       routes: [
         GoRoute(
-          path: '/',
+          path: Routes.splash,
           builder: (context, state) => const SplashScreen(),
         ),
         GoRoute(
-          path: '/home',
+          path: Routes.home,
           builder: (context, state) => const Scaffold(
             body: Text('Home Screen'),
           ),

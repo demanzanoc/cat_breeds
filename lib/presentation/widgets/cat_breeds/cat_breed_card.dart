@@ -19,7 +19,7 @@ class CatBreedCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(Routes.catBreedDetail, extra: catBreed);
+        context.push(Routes.catBreedDetails, extra: catBreed);
       },
       child: Card(
         shape: RoundedRectangleBorder(
