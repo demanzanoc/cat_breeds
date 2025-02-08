@@ -13,9 +13,6 @@ class SplashScreen extends StatelessWidget {
       if (context.mounted) context.go(Routes.home);
     });
 
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: Center(
         child: Padding(
@@ -30,8 +27,7 @@ class SplashScreen extends StatelessWidget {
               ),
               Image.asset(
                 splashImage,
-                width: screenWidth * 0.5,
-                height: screenHeight * 0.3,
+                height: 220,
                 fit: BoxFit.contain,
               ),
             ],
