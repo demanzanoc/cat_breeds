@@ -43,7 +43,6 @@ class CatBreedDetails extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   spacing: 4,
                   children: [
-                    // TODO(demanzanoc): Validate if it's possible to separate into another widget.
                     Text(
                       'Description:',
                       style: TextStyleUtils.boldBodyLarge(context),

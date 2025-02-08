@@ -4,10 +4,12 @@ import 'package:cats_app/config/theme/app_theme.dart';
 import 'package:cats_app/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
   setUpDependencies();
+  await dotenv.load(fileName: '.env');
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
