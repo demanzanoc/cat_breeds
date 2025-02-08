@@ -19,6 +19,10 @@ void main() {
 
   void setUpStubs() {
     when(() => homeScreenProvider.getCatBreeds()).thenAnswer((_) async => {});
+    when(() => homeScreenProvider.retryGetCatBreeds())
+        .thenAnswer((_) async => {});
+    when(() => homeScreenProvider.filterCatBreeds(any()))
+        .thenAnswer((_) async => {});
   }
 
   setUp(() {
@@ -44,7 +48,7 @@ void main() {
 
   group('HomeScreen tests', () {
     testWidgets(
-      'should show a CircularProgressIndicator when the service is loading',
+      'should display a CircularProgressIndicator when the service is loading',
       (tester) async {
         // Arrange
         when(() => homeScreenProvider.isLoadingCatBreeds).thenReturn(true);
@@ -63,7 +67,7 @@ void main() {
     );
 
     testWidgets(
-      'should show a ErrorView widget when the service fails',
+      'should display an ErrorView widget when the service fails',
       (tester) async {
         // Arrange
         when(() => homeScreenProvider.isLoadingCatBreeds).thenReturn(false);
@@ -82,7 +86,30 @@ void main() {
     );
 
     testWidgets(
-      'should show a ListView with the cat breeds when the service loads the data',
+      'should display an ErrorView widget when the service fails and retry loading the data',
+      (tester) async {
+        // Arrange
+        when(() => homeScreenProvider.isLoadingCatBreeds).thenReturn(false);
+        when(() => homeScreenProvider.errorMessage).thenReturn('Error');
+        final widget = ChangeNotifierProvider<HomeScreenProvider>.value(
+          value: homeScreenProvider,
+          child: materialApp,
+        );
+
+        // Act
+        await tester.pumpWidget(widget);
+        expect(find.text('Retry'), findsOneWidget);
+        await tester.tap(find.text('Retry'));
+        await tester.pump();
+
+        // Assert
+        expect(find.byType(ErrorView), findsOneWidget);
+        verify(() => homeScreenProvider.retryGetCatBreeds()).called(1);
+      },
+    );
+
+    testWidgets(
+      'should display a ListView with the cat breeds cards when the service loads the data',
       (tester) async {
         // Arrange
         when(() => homeScreenProvider.isLoadingCatBreeds).thenReturn(false);
@@ -100,6 +127,30 @@ void main() {
         // Assert
         expect(find.byType(ListView), findsOneWidget);
         expect(find.byType(CatBreedCard), findsWidgets);
+      },
+    );
+
+    testWidgets(
+      'should display a TextField when the service loads the data and enter a query param',
+      (tester) async {
+        // Arrange
+        when(() => homeScreenProvider.isLoadingCatBreeds).thenReturn(false);
+        when(() => homeScreenProvider.errorMessage).thenReturn('');
+        when(() => homeScreenProvider.catBreeds)
+            .thenReturn(catBreedsMockedList);
+        final widget = ChangeNotifierProvider<HomeScreenProvider>.value(
+          value: homeScreenProvider,
+          child: materialApp,
+        );
+        final textFieldFinder = find.widgetWithText(TextField, 'Search');
+
+        // Act
+        await tester.pumpWidget(widget);
+        await tester.enterText(textFieldFinder, 'bam');
+        await tester.pump();
+
+        // Assert
+        verify(() => homeScreenProvider.filterCatBreeds(any())).called(1);
       },
     );
   });
