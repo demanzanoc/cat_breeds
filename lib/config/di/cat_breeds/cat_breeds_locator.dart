@@ -11,7 +11,7 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
 abstract class CatBreedsLocator {
-  static void setUpCatBreedsDependencies(GetIt serviceLocator) async {
+  static void setUpCatBreedsDependencies(GetIt serviceLocator) {
     final dioConfig = Dio(
       BaseOptions(
         baseUrl: 'https://api.thecatapi.com/v1',
@@ -21,9 +21,13 @@ abstract class CatBreedsLocator {
       ),
     );
 
+    // Dio
+    serviceLocator.registerLazySingleton<Dio>(() => dioConfig);
+
     // Api Client
-    serviceLocator
-        .registerLazySingleton<HttpClient>(() => DioClient(dio: dioConfig));
+    serviceLocator.registerLazySingleton<HttpClient>(
+      () => DioClient(dio: serviceLocator()),
+    );
 
     // Datasources
     serviceLocator.registerLazySingleton<CatBreedsDatasource>(
