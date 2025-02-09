@@ -19,6 +19,7 @@ class CatBreedCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
         context.push(Routes.catBreedDetails, extra: catBreed);
       },
       child: Card(
