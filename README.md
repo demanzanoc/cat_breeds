@@ -1,4 +1,4 @@
-# cats_app
+# CatBreedsApp
 
 A Flutter project for proof of concepts using TheCatApi API.
 
