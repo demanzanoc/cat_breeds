@@ -31,3 +31,16 @@ jobs:
 
       - name: Run Tests with Coverage
         run: flutter test --coverage
+
+      - name: Set up SonarScanner
+        uses: warchant/setup-sonar-scanner@v7
+
+      - name: Run SonarCloud Scan
+        run: sonar-scanner
+          -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+          -Dsonar.organization=demanzanoc
+          -Dsonar.projectKey=demanzanoc_cat_breeds
+          -Dsonar.sources=lib
+          -Dsonar.tests=test
+          -Dsonar.dart.coverage.reportPath=coverage/lcov.info
